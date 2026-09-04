@@ -5,7 +5,7 @@ export const API_BASE_URL = codespaceName
   : 'http://localhost:8000/api';
 
 export async function fetchCollection(endpoint) {
-  const response = await fetch(`${API_BASE_URL}/${endpoint}`);
+  const response = await fetch(endpoint.startsWith('http') ? endpoint : `${API_BASE_URL}/${endpoint}`);
 
   if (!response.ok) {
     throw new Error(`Unable to load ${endpoint} (${response.status})`);
